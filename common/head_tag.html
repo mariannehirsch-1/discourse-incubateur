@@ -1,0 +1,65 @@
+<script type="text/discourse-plugin" version="0.8.13">
+  api.registerConnectorClass('above-main-container', 'search-banner', {
+    setupComponent(args, component) {
+      var topMenuRoutes = this.siteSettings.top_menu.split('|').map(function(route) {return '/' + route})
+      var homeRoute = topMenuRoutes[0]
+
+      api.onPageChange((url, title) => {
+        var home = url === "/" || url.match(/^\/\?/) || url === homeRoute
+        var showBannerHere = home
+
+        if (showBannerHere){
+          component.set('displaySearchBanner', true)
+          $('html').addClass('display-search-banner')
+        } else {
+          component.set('displaySearchBanner', false)
+          $('html').removeClass('display-search-banner')
+        }
+
+        component.set('show_for', true)
+      })
+    }
+  })
+</script>
+
+
+<script type="text/discourse-plugin" version="0.8.13">
+  const { iconNode } = require("discourse/helpers/fa-icon-node")
+  const h = require("virtual-dom").h
+
+  api.reopenWidget("home-logo", {
+    logo() {
+      const assets = settings.theme_uploads
+      const site = this.siteSettings
+      const logoUrl = assets.logo_url || ""
+      const smallLogoUrl = assets.small_logo_url || ""
+      const mobileView = this.site.mobileView
+      const mobileLogoUrl = assets.mobile_logo_url || ""
+      const showMobileLogo = mobileView && mobileLogoUrl.length > 0
+      const title = settings.title || site.title
+
+      if (!mobileView && this.attrs.minimized) {
+        if (smallLogoUrl.length) {
+          return h("img#site-logo.logo-small", {
+            key: "logo-small",
+            attributes: { src: smallLogoUrl, width: 33, height: 33, alt: `Forum des Territoires : ${title}` }
+          })
+        } else {
+          return iconNode("home")
+        }
+      } else if (showMobileLogo) {
+        return h("img#site-logo.logo-big", {
+          key: "logo-mobile",
+          attributes: { src: mobileLogoUrl, alt: `Forum des Territoires : ${title}` }
+        })
+      } else if (logoUrl.length) {
+        return h("img#site-logo.logo-big", {
+          key: "logo-big",
+          attributes: { src: logoUrl, alt: `Forum des Territoires : ${title}` }
+        })
+      } else {
+        return h("h1#site-text-logo.text-logo", { key: "logo-text" }, `Forum des Territoires : ${title}`)
+      }
+    }
+  })
+  </script>

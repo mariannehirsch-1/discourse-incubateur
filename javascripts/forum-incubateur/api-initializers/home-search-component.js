@@ -88,7 +88,6 @@ export default {
 
       api.decorateWidget('search-widget:after', function(helper) {
         const searchWidget = helper.widget
-        const appController = helper.register.lookup('controller:application')
         const searchMenuVisible = searchWidget.state.searchVisible
         if (!searchMenuVisible && !searchWidget.attrs.topic) {
           return helper.attach('search-menu', {

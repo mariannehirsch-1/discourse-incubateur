@@ -1,27 +1,21 @@
-.head-banner {
-  width: 100%;
+.custom-search-banner {
   background: var(--secondary);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 3rem 1em;
   margin: 1rem auto;
-  box-shadow: 3px 3px 1rem rgba(0,0,0, 0.1);
+  box-shadow: 1px 1px 1rem rgba(0, 0, 0, 0.2);
+  margin: 0 0 3rem 0;
 
-  h1 {
-    font-weight: normal;
-  }
-}
-
-.display-search-banner {
-  .search-banner {
-    padding: 2rem 5rem;
-    box-shadow: 1px 1px 1rem rgba(0, 0, 0, 0.2);
-    margin: 0 0 3rem 0;
-  }
   .custom-search-banner-text {
     margin-top: 2rem;
     text-align: center;
+  }
+
+  h1 {
+    font-weight: normal;
   }
 
   input {

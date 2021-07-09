@@ -2,7 +2,7 @@ body {
   font-family: Marianne, Arial, sans-serif;
 }
 
-.home-banner > div {
+.home-banner > article {
   display: flex;
   flex-direction: column;
   padding: 5rem 6rem;
@@ -23,7 +23,7 @@ body {
     }
   }
 
-  &> button {
+  button {
     width: max-content;
     background-color: #009F79;
     padding: 1rem 1.5rem;

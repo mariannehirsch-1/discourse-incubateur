@@ -1,24 +1,26 @@
 <meta http-equiv="Content-Security-Policy" cotent="script-src 'self' https://stats.data.gouv.fr 'unsafe-inline' 'unsafe-eval'">
 
-<script type="text/x-handlebars" data-template-name="/connectors/above-main-container/home-banner">
+<script type="text/x-handlebars" data-template-name="/connectors/below-site-header/home-banner">
   {{#if isHomePage}}
-    <div>
-      <div class="text">
-        <p class="title">De meilleurs services numériques pour mes habitants :<br>
-          Par où commencer ?</p>
-        <p>L’ANCT et d’autres collectivités territoriales pourront vous répondre.</p>
+    <article>
+      <div class="wrap">
+        <div class="text">
+          <p class="title">De meilleurs services numériques pour mes habitants :<br>
+            Par où commencer ?</p>
+          <p>L’ANCT et d’autres collectivités territoriales pourront vous répondre.</p>
+        </div>
+        {{create-topic-button
+          canCreateTopic=true
+          id="banner-create-topic-button"
+          label=(theme-prefix 'ask_a_question')
+        }}
       </div>
-      {{create-topic-button
-        canCreateTopic=true
-        icon="nooo"
-        label=(theme-prefix 'ask_a_question')
-      }}
-    </div>
+    </article>
   {{/if}}
 </script>
 
 <script type="text/discourse-plugin" version="0.8.13">
-  api.registerConnectorClass('above-main-container', 'home-banner', {
+  api.registerConnectorClass('below-site-header', 'home-banner', {
     setupComponent(args, component) {
       api.onPageChange((url, title) => {
         component.set('isHomePage', url === '/')

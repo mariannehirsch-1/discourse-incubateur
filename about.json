@@ -4,7 +4,8 @@
   "license_url": null,
   "component": false,
   "assets": {
-    "logo_url": "assets/forum-territoires.svg"
+    "logo_url": "assets/forum-territoires.svg",
+    "home_banner_image": "assets/home-banner-background.svg"
   },
   "color_schemes": {
     "forum-territoires": {

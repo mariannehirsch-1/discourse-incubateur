@@ -2,6 +2,10 @@ body {
   font-family: Marianne, Arial, sans-serif;
 }
 
+table td {
+  vertical-align: top;
+}
+
 .home-banner > article {
   flex-direction: column;
   padding: 5rem 6rem;

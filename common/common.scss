@@ -54,3 +54,8 @@ table td {
 .category-topic-link.visited a.title:not(.badge-notification) {
   color: var(--primary);
 }
+
+// Hide the top bar for navigation through categories, tags, top/recent…
+.navigation-container {
+  display: none;
+}

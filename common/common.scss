@@ -7,16 +7,18 @@ table td {
 }
 
 .home-banner > article {
-  flex-direction: column;
-  padding: 5rem 6rem;
-  margin: 0 0 3rem 0;
-  background: #F0F6F5 url($home_banner_image) no-repeat 80% 0;
-  background-size: contain;
+  background-color: #F0F6F5;
+
+  &> div {
+    margin: 0 auto;
+    background: transparent url($home_banner_image) no-repeat right 0;
+    background-size: contain;
+  }
 
   .text {
     flex: 1;
     margin: 0;
-    max-width: 70%;
+    padding: 5rem 25% 5rem 0;
     p {
       margin: .5rem 0;
     }

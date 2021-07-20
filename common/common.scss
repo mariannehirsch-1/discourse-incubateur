@@ -46,6 +46,17 @@ table td {
   }
 }
 
+/*
+Consultation specific while voting
+*/
+
+.category-coselec:not(.staff) {
+  // Hide "Reply" button
+  .topic-footer-main-buttons .btn-primary.create {
+    display: none;
+  }
+}
+
 
 // Override Discourse theme
 

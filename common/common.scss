@@ -51,8 +51,12 @@ table td {
 */
 
 .category-coselec:not(.staff) {
-  // Hide "Reply" button
+  // Hide "Reply" button in the bottom
   .topic-footer-main-buttons .btn-primary.create {
+    display: none;
+  }
+  // Hide "Reply" button in the timeline
+  .timeline-footer-controls .reply-to-post {
     display: none;
   }
 }

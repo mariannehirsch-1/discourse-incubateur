@@ -71,6 +71,6 @@ table td {
 }
 
 // Hide the top bar for navigation through categories, tags, top/recent…
-.navigation-container {
+body:not(.staff) .navigation-container {
   display: none;
 }

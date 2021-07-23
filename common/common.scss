@@ -76,18 +76,13 @@ table td {
   color: var(--primary);
 }
 
-// Hide the top bar for navigation through categories, tags, top/recent…
-
-.navigation-container {
-  // display: none;
-}
-
-
 // Theming
 
-// Categories&tags selector
 .navigation-container {
-  .select-kit.combo-box {
+  // Categories and tags selector, Create topic button
+  & > :not(.nav-pills) {
+    a,
+    button,
     .select-kit-header {
       border-radius: 2rem;
       padding: .3rem 1rem .5rem 1rem;
@@ -99,20 +94,20 @@ table td {
       }
     }
   }
-}
 
-// Latest / unread / top buttons
-.nav-pills {
-  & > li a {
-    background-color: var(--secondary);
-
-    &.active,
-    &:hover {
-      color: var(--tertiary);
+  // Latest / unread / top buttons
+  .nav-pills {
+    & > li a {
       background-color: var(--secondary);
-	  }
-    &.active {
-      border-bottom: 4px solid var(--tertiary);
+
+      &.active,
+      &:hover {
+        color: var(--tertiary);
+        background-color: var(--secondary);
+      }
+      &.active {
+        border-bottom: 4px solid var(--tertiary);
+      }
     }
   }
 }

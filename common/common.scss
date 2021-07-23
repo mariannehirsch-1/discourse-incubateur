@@ -71,6 +71,74 @@ table td {
 }
 
 // Hide the top bar for navigation through categories, tags, top/recent…
-body:not(.staff) .navigation-container {
-  display: none;
+
+.navigation-container {
+  // display: none;
+}
+
+
+// Theming
+
+// Categories&tags selector
+.navigation-container {
+  .select-kit.combo-box {
+    .select-kit-header {
+      border-radius: 2rem;
+      padding: .3rem 1rem .5rem 1rem;
+      background-color: var(--header_background);
+
+      &:focus,
+      &:active {
+        outline: none;
+      }
+    }
+  }
+}
+
+// Latest / unread / top buttons
+.nav-pills {
+  & > li a {
+    background-color: var(--secondary);
+
+    &.active,
+    &:hover {
+      color: var(--tertiary);
+      background-color: var(--secondary);
+	  }
+    &.active {
+      border-bottom: 4px solid var(--tertiary);
+    }
+  }
+}
+
+// General buttons
+:not(.d-editor-button-bar) >
+.btn:not(.single-select-header):not(.modal-close),
+.topic-notifications-button > .select-kit > .btn {
+  background-color: var(--header_background);
+  color: var(--primary);
+  border-radius: 1.2em;
+  border: 1px solid var(--primary-low-mid);
+
+  .d-icon {
+    color: var(--primary);
+  }
+
+  &:hover {
+    background-color: var(--quaternary-low);
+    color: var(--primary);
+    .d-icon {
+      color: var(--primary);
+    }
+  }
+}
+
+// Topic links
+.topic-list-main-link a.title,
+.topic-list .main-link a.title,
+.latest-topic-list-item .main-link a.title {
+  color: var(--tertiary);
+  &:hover {
+    text-decoration: underline;
+  }
 }

@@ -1,3 +1,9 @@
+
+:root {
+  --btn-cta-fg: #fff;
+  --btn-cta-bg: #009F79;
+}
+
 body {
   font-family: Marianne, Arial, sans-serif;
 }
@@ -30,11 +36,11 @@ table td {
 
   button {
     width: max-content;
-    background-color: #009F79;
     padding: 1rem 1.5rem;
+    border-radius: 2rem;
+    background-color: var(--btn-cta-bg) !important;
     margin: 2rem 0;
-    border-radius: 10rem;
-    color: #fff;
+    color: var(--btn-cta-fg) !important;
     border: 0;
     &::after {
       content: " →";
@@ -112,7 +118,6 @@ table td {
 .topic-notifications-button > .select-kit > .btn {
   background-color: var(--header_background);
   color: var(--primary);
-  border-radius: 1.2em;
   border: 1px solid var(--primary-low-mid);
 
   .d-icon {

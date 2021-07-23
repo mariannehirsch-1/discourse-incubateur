@@ -2,6 +2,7 @@
 :root {
   --btn-cta-fg: #fff;
   --btn-cta-bg: #009F79;
+  --tertiary-medium: #a05bea;
 }
 
 body {
@@ -73,7 +74,7 @@ table td {
 .topic-list-item.visited a.title:not(.badge-notification),
 .latest-topic-list-item.visited a.title:not(.badge-notification),
 .category-topic-link.visited a.title:not(.badge-notification) {
-  color: var(--primary);
+  color: var(--tertiary-medium);
 }
 
 // Theming

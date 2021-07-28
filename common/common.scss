@@ -3,6 +3,8 @@
   --btn-cta-fg: #fff;
   --btn-cta-bg: #009F79;
   --tertiary-medium: #a05bea;
+  --create-topic-fg: #fff;
+  --create-topic-bg: #009;
 }
 
 body {
@@ -47,9 +49,6 @@ table td {
       content: " →";
       margin-left: .5rem;
     }
-    & > svg {
-      display: none;
-    }
   }
 }
 
@@ -79,6 +78,11 @@ table td {
 
 // Theming
 
+// remove "+" sign from button "Create a topic"
+button.btn-icon-text > svg {
+  display: none !important;
+}
+
 .navigation-container {
   // Categories and tags selector, Create topic button
   & > :not(.nav-pills) {
@@ -86,7 +90,7 @@ table td {
     button,
     .select-kit-header {
       border-radius: 2rem;
-      padding: .3rem 1rem .5rem 1rem;
+      padding: 0 1.3rem .2rem 1.3rem;
       background-color: var(--header_background);
 
       &:focus,
@@ -109,6 +113,14 @@ table td {
       &.active {
         border-bottom: 4px solid var(--tertiary);
       }
+    }
+  }
+
+  .btn-icon-text {
+    background-color: var(--create-topic-bg) !important;
+    color: var(--create-topic-fg) !important;
+    .icon {
+      display: none !important;
     }
   }
 }

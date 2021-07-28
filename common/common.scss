@@ -15,12 +15,12 @@ table td {
   vertical-align: top;
 }
 
-.home-banner > article {
-  background-color: #F0F6F5;
+.banner {
 
   &> div {
     margin: 0 auto;
-    background: transparent url($home_banner_image) no-repeat right 0;
+    background-repeat: no-repeat;
+    background-position-x: right;
     background-size: contain;
   }
 
@@ -31,9 +31,8 @@ table td {
     p {
       margin: .5rem 0;
     }
-    .title {
+    h1 {
       font-size: 2rem;
-      font-weight: bold;
     }
   }
 
@@ -50,6 +49,18 @@ table td {
       margin-left: .5rem;
     }
   }
+}
+
+.home.banner {
+  background-color: #F0F6F5;
+  & > div {
+    background-image: url($home_banner_image);
+  }
+}
+
+.category.banner {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 /*

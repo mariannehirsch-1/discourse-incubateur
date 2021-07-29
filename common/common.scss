@@ -1,49 +1,74 @@
-body {
+
+:root {
+  --btn-cta-fg: #fff;
+  --btn-cta-bg: #009F79;
+  --tertiary-medium: #a05bea;
+  --create-topic-fg: #fff;
+  --create-topic-bg: #009;
+}
+
+body,
+h1, h2, h3, h4, h5, h6 {
   font-family: Marianne, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
 }
 
 table td {
   vertical-align: top;
 }
 
-.home-banner > article {
-  background-color: #F0F6F5;
+.banner {
 
   &> div {
     margin: 0 auto;
-    background: transparent url($home_banner_image) no-repeat right 0;
+    background-repeat: no-repeat;
+    background-position-x: right;
     background-size: contain;
   }
 
   .text {
     flex: 1;
+    font-size: 1.2rem;
     margin: 0;
     padding: 5rem 25% 5rem 0;
     p {
       margin: .5rem 0;
     }
-    .title {
-      font-size: 2rem;
-      font-weight: bold;
+    h1 {
+      font-size: 2.63rem;
     }
   }
 
   button {
     width: max-content;
-    background-color: #009F79;
     padding: 1rem 1.5rem;
+    border-radius: 2rem;
+    background-color: var(--btn-cta-bg) !important;
     margin: 2rem 0;
-    border-radius: 10rem;
-    color: #fff;
+    color: var(--btn-cta-fg) !important;
     border: 0;
     &::after {
       content: " →";
       margin-left: .5rem;
     }
-    & > svg {
-      display: none;
-    }
   }
+}
+
+.home.banner {
+  background-color: #F0F6F5;
+  padding: 3rem 0;
+  & > div {
+    background-image: url($home_banner_image);
+  }
+  h1 {
+    margin-bottom: 1.4rem;
+  }
+}
+
+.category.banner {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 /*
@@ -67,10 +92,85 @@ table td {
 .topic-list-item.visited a.title:not(.badge-notification),
 .latest-topic-list-item.visited a.title:not(.badge-notification),
 .category-topic-link.visited a.title:not(.badge-notification) {
-  color: var(--primary);
+  color: var(--tertiary-medium);
 }
 
-// Hide the top bar for navigation through categories, tags, top/recent…
-body:not(.staff) .navigation-container {
-  display: none;
+// Theming
+
+// remove "+" sign from button "Create a topic"
+button.btn-icon-text > svg {
+  display: none !important;
+}
+
+.navigation-container {
+  // Categories and tags selector, Create topic button
+  & > :not(.nav-pills) {
+    a,
+    button,
+    .select-kit-header {
+      border-radius: 2rem;
+      padding: 0 1.3rem .2rem 1.3rem;
+      background-color: var(--header_background);
+
+      &:focus,
+      &:active {
+        outline: none;
+      }
+    }
+  }
+
+  // Latest / unread / top buttons
+  .nav-pills {
+    & > li a {
+      background-color: var(--secondary);
+
+      &.active,
+      &:hover {
+        color: var(--tertiary);
+        background-color: var(--secondary);
+      }
+      &.active {
+        border-bottom: 4px solid var(--tertiary);
+      }
+    }
+  }
+
+  .btn-icon-text {
+    background-color: var(--create-topic-bg) !important;
+    color: var(--create-topic-fg) !important;
+    .icon {
+      display: none !important;
+    }
+  }
+}
+
+// General buttons
+:not(.d-editor-button-bar) >
+.btn:not(.single-select-header):not(.modal-close),
+.topic-notifications-button > .select-kit > .btn {
+  background-color: var(--header_background);
+  color: var(--primary);
+  border: 1px solid var(--primary-low-mid);
+
+  .d-icon {
+    color: var(--primary);
+  }
+
+  &:hover {
+    background-color: var(--quaternary-low);
+    color: var(--primary);
+    .d-icon {
+      color: var(--primary);
+    }
+  }
+}
+
+// Topic links
+.topic-list-main-link a.title,
+.topic-list .main-link a.title,
+.latest-topic-list-item .main-link a.title {
+  color: var(--tertiary);
+  &:hover {
+    text-decoration: underline;
+  }
 }

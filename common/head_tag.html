@@ -4,24 +4,6 @@
 <script>location.href.includes('.gouv.fr') && window.LogRocket && window.LogRocket.init('ifgchv/forum-des-territoires');</script>
 
 
-<script type="text/x-handlebars" data-template-name="/connectors/below-site-header/home-banner">
-  {{#if isHomePage}}
-    <article>
-      <div class="wrap">
-        <div class="text">
-          <h1>De meilleurs services numériques pour mes habitants :<br>Par où commencer ?</h1>
-          <p>L’ANCT et d’autres collectivités territoriales pourront vous répondre.</p>
-          <!-- {{create-topic-button
-            canCreateTopic=true
-            id="banner-create-topic-button"
-            label=(theme-prefix 'ask_a_question')
-          }} -->
-        </div>
-      </div>
-    </article>
-  {{/if}}
-</script>
-
 <script type="text/discourse-plugin" version="0.8.13">
   api.registerConnectorClass('below-site-header', 'home-banner', {
     setupComponent(args, component) {
@@ -30,6 +12,52 @@
       })
     }
   })
+</script>
+<script type="text/x-handlebars" data-template-name="/connectors/below-site-header/home-banner">
+  {{#if isHomePage}}
+    <article class="home banner">
+      <div class="wrap">
+        <div class="text">
+          <h1>De meilleurs services numériques <br>pour mes habitants : <br>Par où commencer ?</h1>
+          <p>L’ANCT et d’autres collectivités territoriales pourront vous répondre.</p>
+          <!-- {{create-topic-button
+            canCreateTopic="true"
+            id="home-banner-button"
+          }} -->
+        </div>
+      </div>
+    </article>
+  {{/if}}
+</script>
+
+
+<script type="text/discourse-plugin" version="0.8.13">
+  api.registerConnectorClass('below-site-header', 'category-banner', {
+    setupComponent(args, component) {
+      api.onPageChange((url, title) => {
+        const controller = api.container.lookup('controller:navigation/category')
+        const category = controller.get('category')
+        console.debug({category})
+        component.set('category', category)
+        component.set('settings', Discourse.SiteSettings)
+        component.set('show', /^\/c\//.test(url) && category)
+      })
+    }
+  })
+</script>
+<script type="text/x-handlebars" data-template-name="/connectors/below-site-header/category-banner">
+  {{#if show}}
+  <article class="category banner" style="background-color: #{{category.color}}; color: #{{category.text_color}};}}')">
+    <div class="wrap" style="background-image: url('{{category.uploaded_logo.url}}')">
+      <div class="text">
+        <h1 class="title">{{category.name}}</h1>
+        <p>
+          {{category.description}}
+        </p>
+      </div>
+    </div>
+  </article>
+  {{/if}}
 </script>
 
 

@@ -27,6 +27,25 @@
   {{/if}}
 </script>
 
+<script type="text/discourse-plugin" version="0.8.13">
+  api.registerConnectorClass('before-create-topic-button', 'create-topic-anonymous', {
+    setupComponent(args, component) {
+      component.set('isAnonymous', !api.getCurrentUser() || api.getCurrentUser().is_anonymous)
+    }
+  })
+</script>
+<script type="text/x-handlebars" data-template-name="/connectors/before-create-topic-button/create-topic-anonymous">
+  {{#if isAnonymous}}
+  {{create-topic-button
+    canCreateTopic=true
+    action=(route-action "showLogin")
+    disabled=false
+    btnClass="btn-default"
+    label="topic.create"
+    canCreateTopicOnTag=true
+  }}
+  {{/if}}
+</script>
 
 <script type="text/discourse-plugin" version="0.8.13">
   api.registerConnectorClass('below-site-header', 'category-banner', {
@@ -34,7 +53,6 @@
       api.onPageChange((url, title) => {
         const controller = api.container.lookup('controller:navigation/category')
         const category = controller.get('category')
-        console.debug({category})
         component.set('category', category)
         component.set('settings', Discourse.SiteSettings)
         component.set('show', /^\/c\//.test(url) && category)

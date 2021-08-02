@@ -9,18 +9,37 @@
     setupComponent(args, component) {
       api.onPageChange((url, title) => {
         component.set('isHomePage', url === '/')
+        component.set('isAnonymous', !api.getCurrentUser() || api.getCurrentUser().is_anonymous)
       })
     }
   })
 </script>
 <script type="text/x-handlebars" data-template-name="/connectors/below-site-header/home-banner">
   {{#if isHomePage}}
-    <article class="home banner">
-      <div class="wrap">
-        <div class="text">
-          <h1>De meilleurs services numériques <br>pour mes habitants : <br>Par où commencer ?</h1>
-          <p>L’ANCT et d’autres collectivités territoriales pourront vous répondre.</p>
-          <a href="/new-topic" class="btn-default btn btn-icon-text ember-view">Poser une question</a>
+  <article class="home banner">
+    <div class="wrap">
+      <div class="text">
+        <h1>De meilleurs services numériques <br>pour mes habitants : <br>Par où commencer ?</h1>
+        <p>L’ANCT et d’autres collectivités territoriales pourront vous répondre.</p>
+          {{#if isAnonymous}}
+            {{create-topic-button
+              canCreateTopic=true
+              action=(route-action "showLogin")
+              disabled=false
+              btnClass="btn-default"
+              label="topic.create"
+              canCreateTopicOnTag=true
+            }}
+          {{else}}
+            {{create-topic-button
+              canCreateTopic=true
+              action=(route-action "createTopic")
+              disabled=false
+              btnClass="btn-default"
+              label="topic.create"
+              canCreateTopicOnTag=true
+            }}
+          {{/if}}
         </div>
       </div>
     </article>

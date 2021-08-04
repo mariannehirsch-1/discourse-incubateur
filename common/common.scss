@@ -78,6 +78,10 @@ table td {
 }
 
 .category.banner {
+  position: relative;
+}
+.category .color-filter {
+  background-color: rgba(255, 255, 255, .75);
   padding-top: 1rem;
   padding-bottom: 1rem;
 }

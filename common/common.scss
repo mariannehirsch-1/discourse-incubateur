@@ -18,14 +18,43 @@ table td {
   vertical-align: top;
 }
 
-.sign-up-button,
-.create-account-body .btn-primary,
-.login-modal-body .btn-primary {
+// Global rounded button to extend
+.btn-behavior {
+  font-size: 1.1rem !important;
+  font-weight: 700;
+  border-radius: .5rem;
+  padding: .5rem 2rem .6rem !important;
+  color: #888888;
+}
+
+// Global primary button to extend
+.btn-primary-behavior {
   color: var(--create-topic-fg) !important;
   background-color: var(--create-topic-bg) !important;
 }
-#login-link, #new-account-link {
-  padding-left: 18px; // taken from .btn-large
+
+// Login/Signup buttons
+.header-buttons button {
+  @extend .btn-behavior;
+  &.sign-up-button {
+    @extend .btn-primary-behavior;
+  }
+}
+
+// Modals account buttons
+.modal button {
+  @extend .btn-behavior;
+  &.btn-primary {
+    @extend .btn-primary-behavior;
+  }
+}
+
+// Post list footer buttons
+#topic-footer-buttons button {
+  @extend .btn-behavior;
+  &.btn-primary {
+    @extend .btn-primary-behavior;
+  }
 }
 
 .banner {

@@ -25,7 +25,7 @@ table td {
   background-color: var(--create-topic-bg) !important;
 }
 #login-link, #new-account-link {
-  padding-left: inherit;
+  padding-left: 18px; // taken from .btn-large
 }
 
 .banner {

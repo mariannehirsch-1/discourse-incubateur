@@ -5,6 +5,7 @@
   --tertiary-medium: #a05bea;
   --create-topic-fg: #fff;
   --create-topic-bg: #009;
+  --neutral: #888;
 }
 
 body,
@@ -117,6 +118,31 @@ table td {
 
 .category-heading {
   display: none;
+}
+
+.categories-list {
+  a {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .25);
+    border-radius: .5rem;
+    margin: 0 2rem 2rem 0;
+    display: inline-flex;
+    align-items: center;
+    color: var(--neutral);
+    font-size: 1.1rem;
+
+    span:first-child {
+      padding: 2rem;
+      min-width: .3rem;
+      width: 2rem;
+    }
+    span:last-child {
+      background-color: #ffffff;
+      width: 100%;
+      padding: 1.5rem 2rem;
+      align-self: stretch;
+      border-radius: 0 .5rem .5rem 0;
+    }
+  }
 }
 
 

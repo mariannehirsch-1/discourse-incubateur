@@ -73,6 +73,7 @@
         const controller = api.container.lookup('controller:navigation/category')
         const category = controller.get('category')
         component.set('category', category)
+        component.set('description', category.description_excerpt && category.description_excerpt.replace(/(<([^>]+)>)/gi, ""))
         component.set('settings', Discourse.SiteSettings)
         component.set('show', /^\/c\//.test(url) && category)
       })
@@ -87,12 +88,40 @@
         <div class="text">
           <h1 class="title">{{category.name}}</h1>
           <p>
-            {{category.description_excerpt}}
+            {{description}}
           </p>
         </div>
       </div>
     </div>
   </article>
+  {{/if}}
+</script>
+
+
+<script type="text/discourse-plugin" version="0.8.13">
+  api.registerConnectorClass('above-main-container', 'categories-list', {
+    setupComponent(args, component) {
+      api.onPageChange((url, title) => {
+        const controller = api.container.lookup('controller:navigation/category')
+        const category = controller.get('category')
+        const categories = controller.get('category').subcategories
+        component.set('categories', categories)
+        component.set('settings', Discourse.SiteSettings)
+        component.set('show', true) // /^\/c\//.test(url) && categories.length)
+      })
+    }
+  })
+</script>
+<script type="text/x-handlebars" data-template-name="/connectors/above-main-container/categories-list">
+  {{#if show}}
+  <nav class="categories-list">
+    {{#each categories as |category|}}
+      <a href="{{category.url}}" style="background-color: #{{category.color}}">
+        <span></span>
+        <span>{{category.name}}</span>
+      </a>
+    {{/each}}
+  </nav>
   {{/if}}
 </script>
 

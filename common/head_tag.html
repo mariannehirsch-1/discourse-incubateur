@@ -75,7 +75,6 @@
         component.set('category', category)
         component.set('show', /^\/c\//.test(url) && category)
         component.set('description', category?.description_excerpt && category?.description_excerpt?.replace(/(<([^>]+)>)/gi, ""))
-        component.set('settings', Discourse.SiteSettings)
       })
     }
   })
@@ -94,6 +93,43 @@
       </div>
     </div>
   </article>
+  {{/if}}
+</script>
+
+
+<script type="text/discourse-plugin" version="0.8.13">
+  api.registerConnectorClass('above-main-container', 'breadcrumb', {
+    setupComponent(args, component) {
+      api.onPageChange((url, title) => {
+        let controller = api.container.lookup('controller:topic')
+        let topic = controller.get('model')
+        let categories = topic && topic.get('category').ancestors
+        if(!topic) {
+          controller = api.container.lookup('controller:navigation/category')
+          categories = controller.get('category').ancestors
+        }
+        component.set('categories', categories)
+        component.set('topic', topic)
+        component.set('show', categories?.length)
+      })
+    }
+  })
+</script>
+<script type="text/x-handlebars" data-template-name="/connectors/above-main-container/breadcrumb">
+  {{#if show}}
+  <nav class="breadcrumb">
+    <a href="/">Accueil</a>
+    {{#each categories as |category|}}
+      <a href="{{category.url}}">
+        <span>{{category.name}}</span>
+      </a>
+      {{/each}}
+      {{#if topic}}
+      <a href="{{topic.url}}">
+        <span>{{topic.title}}</span>
+      </a>
+      {{/if}}
+  </nav>
   {{/if}}
 </script>
 

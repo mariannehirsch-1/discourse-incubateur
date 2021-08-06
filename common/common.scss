@@ -145,6 +145,18 @@ table td {
   }
 }
 
+.breadcrumb {
+  margin: 1rem 0;
+  a:not(:last-of-type):after {
+    display: inline-block;
+    content: " » ";
+    margin: 0 .5rem;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
 
 // Override Discourse theme
 

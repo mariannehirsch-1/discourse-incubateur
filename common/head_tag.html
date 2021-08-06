@@ -73,9 +73,9 @@
         const controller = api.container.lookup('controller:navigation/category')
         const category = controller.get('category')
         component.set('category', category)
-        component.set('description', category.description_excerpt && category.description_excerpt.replace(/(<([^>]+)>)/gi, ""))
-        component.set('settings', Discourse.SiteSettings)
         component.set('show', /^\/c\//.test(url) && category)
+        component.set('description', category?.description_excerpt && category?.description_excerpt?.replace(/(<([^>]+)>)/gi, ""))
+        component.set('settings', Discourse.SiteSettings)
       })
     }
   })
@@ -104,10 +104,10 @@
       api.onPageChange((url, title) => {
         const controller = api.container.lookup('controller:navigation/category')
         const category = controller.get('category')
-        const categories = controller.get('category').subcategories
+        const categories = category ? controller.get('category').subcategories : []
         component.set('categories', categories)
         component.set('settings', Discourse.SiteSettings)
-        component.set('show', true) // /^\/c\//.test(url) && categories.length)
+        component.set('show', categories?.length)
       })
     }
   })

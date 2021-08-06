@@ -144,9 +144,10 @@
         let categories = category ? controller.get('category').subcategories : []
 
         // home page
-        if(!categories.length) {
+        if(url === '/') {
           categories = controller.site.categories
         }
+        debugger
 
         component.set('categories', categories)
         component.set('show', categories?.length)

@@ -103,10 +103,11 @@
       api.onPageChange((url, title) => {
         let controller = api.container.lookup('controller:topic')
         let topic = controller.get('model')
-        let categories = topic && topic.get('category').ancestors
+        let categories = topic && topic.get('category')?.ancestors
+        // category page
         if(!topic) {
           controller = api.container.lookup('controller:navigation/category')
-          categories = controller.get('category').ancestors
+          categories = controller.get('category')?.ancestors
         }
         component.set('categories', categories)
         component.set('topic', topic)
@@ -140,9 +141,14 @@
       api.onPageChange((url, title) => {
         const controller = api.container.lookup('controller:navigation/category')
         const category = controller.get('category')
-        const categories = category ? controller.get('category').subcategories : []
+        let categories = category ? controller.get('category').subcategories : []
+
+        // home page
+        if(!categories.length) {
+          categories = controller.site.categories
+        }
+
         component.set('categories', categories)
-        component.set('settings', Discourse.SiteSettings)
         component.set('show', categories?.length)
       })
     }

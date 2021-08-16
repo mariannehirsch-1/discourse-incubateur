@@ -6,6 +6,7 @@
   --create-topic-fg: #fff;
   --create-topic-bg: #009;
   --neutral: #888;
+  --black: #161616;
 }
 
 body,
@@ -127,7 +128,7 @@ table td {
     margin: 0 2rem 2rem 0;
     display: inline-flex;
     align-items: center;
-    color: var(--neutral);
+    color: var(--black);
     font-size: 1.1rem;
 
     span:first-child {

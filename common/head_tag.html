@@ -98,7 +98,7 @@
 
 
 <script type="text/discourse-plugin" version="0.8.13">
-  api.registerConnectorClass('discovery-list-controls-above', 'categories-list', {
+  api.registerConnectorClass('top-notices', 'categories-list', {
     setupComponent(args, component) {
       api.onPageChange((url, title) => {
         const controller = api.container.lookup('controller:navigation/category')
@@ -116,7 +116,7 @@
     }
   })
 </script>
-<script type="text/x-handlebars" data-template-name="/connectors/discovery-list-controls-above/categories-list">
+<script type="text/x-handlebars" data-template-name="/connectors/top-notices/categories-list">
   {{#if show}}
   <nav class="header-categories-list">
     <h2>Thématiques</h2>
@@ -132,7 +132,7 @@
 
 
 <script type="text/discourse-plugin" version="0.8.13">
-  api.registerConnectorClass('discovery-list-controls-above', 'breadcrumb', {
+  api.registerConnectorClass('top-notices', 'breadcrumb', {
     setupComponent(args, component) {
       api.onPageChange((url, title) => {
         let controller = api.container.lookup('controller:topic')
@@ -153,7 +153,7 @@
     }
   })
 </script>
-<script type="text/x-handlebars" data-template-name="/connectors/discovery-list-controls-above/breadcrumb">
+<script type="text/x-handlebars" data-template-name="/connectors/top-notices/breadcrumb">
   {{#if show}}
   <nav class="breadcrumb">
     <a href="/">Accueil</a>

@@ -98,16 +98,53 @@
 
 
 <script type="text/discourse-plugin" version="0.8.13">
-  api.registerConnectorClass('above-main-container', 'breadcrumb', {
+  api.registerConnectorClass('discovery-list-controls-above', 'categories-list', {
+    setupComponent(args, component) {
+      api.onPageChange((url, title) => {
+        const controller = api.container.lookup('controller:navigation/category')
+        const category = controller.get('category')
+        let categories = category ? controller.get('category').subcategories : []
+
+        // home page
+        if(url === '/') {
+          // home page caterogies is disabled
+          // categories = controller.site.categories
+        }
+        component.set('categories', categories)
+        component.set('show', categories?.length)
+      })
+    }
+  })
+</script>
+<script type="text/x-handlebars" data-template-name="/connectors/discovery-list-controls-above/categories-list">
+  {{#if show}}
+  <nav class="header-categories-list">
+    <h2>Thématiques</h2>
+    {{#each categories as |category|}}
+      <a href="{{category.url}}" style="background-color: #{{category.color}}">
+        <span></span>
+        <span>{{category.name}}</span>
+      </a>
+    {{/each}}
+  </nav>
+  {{/if}}
+</script>
+
+
+<script type="text/discourse-plugin" version="0.8.13">
+  api.registerConnectorClass('discovery-list-controls-above', 'breadcrumb', {
     setupComponent(args, component) {
       api.onPageChange((url, title) => {
         let controller = api.container.lookup('controller:topic')
         let topic = controller.get('model')
-        let categories = topic && topic.get('category')?.ancestors
+        let categories = []
+        if (topic) {
+          categories = topic.get('category')?.ancestors || []
+        }
         // category page
-        if(!topic) {
+        else {
           controller = api.container.lookup('controller:navigation/category')
-          categories = controller.get('category')?.ancestors
+          categories = controller.get('category')?.ancestors || []
         }
         component.set('categories', categories)
         component.set('topic', topic)
@@ -116,7 +153,7 @@
     }
   })
 </script>
-<script type="text/x-handlebars" data-template-name="/connectors/above-main-container/breadcrumb">
+<script type="text/x-handlebars" data-template-name="/connectors/discovery-list-controls-above/breadcrumb">
   {{#if show}}
   <nav class="breadcrumb">
     <a href="/">Accueil</a>
@@ -133,41 +170,6 @@
   </nav>
   {{/if}}
 </script>
-
-
-<script type="text/discourse-plugin" version="0.8.13">
-  api.registerConnectorClass('above-main-container', 'categories-list', {
-    setupComponent(args, component) {
-      api.onPageChange((url, title) => {
-        const controller = api.container.lookup('controller:navigation/category')
-        const category = controller.get('category')
-        let categories = category ? controller.get('category').subcategories : []
-
-        // home page
-        if(url === '/') {
-          categories = controller.site.categories
-        }
-        debugger
-
-        component.set('categories', categories)
-        component.set('show', categories?.length)
-      })
-    }
-  })
-</script>
-<script type="text/x-handlebars" data-template-name="/connectors/above-main-container/categories-list">
-  {{#if show}}
-  <nav class="header-categories-list">
-    {{#each categories as |category|}}
-      <a href="{{category.url}}" style="background-color: #{{category.color}}">
-        <span></span>
-        <span>{{category.name}}</span>
-      </a>
-    {{/each}}
-  </nav>
-  {{/if}}
-</script>
-
 
 <script type="text/discourse-plugin" version="0.8.13">
   const { iconNode } = require("discourse/helpers/fa-icon-node")

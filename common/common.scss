@@ -262,3 +262,7 @@ button.btn-icon-text > svg {
 .post-info.edits {
   display: none;
 }
+
+body:not(.staff) .small-action {
+  display: none;
+}

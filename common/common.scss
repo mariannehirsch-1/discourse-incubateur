@@ -198,15 +198,12 @@ button.btn-icon-text > svg {
   // Latest / unread / top buttons
   .nav-pills {
     & > li a {
-      background-color: var(--secondary);
+      background-color: transparent;
 
       &.active,
       &:hover {
-        color: var(--tertiary);
-        background-color: var(--secondary);
-      }
-      &.active {
-        border-bottom: 4px solid var(--tertiary);
+        color: var(--neutral);
+        background-color: transparent;
       }
     }
   }

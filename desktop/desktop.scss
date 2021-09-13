@@ -1,3 +1,21 @@
 body:not(.staff) .hamburger-dropdown {
   display: none;
 }
+
+.home.banner {
+  padding: 3rem 0;
+  & > div {
+    background-size: auto;
+  }
+}
+
+
+.banner {
+  .text {
+    padding: 5rem 25% 5rem 0;
+  }
+}
+
+#main-outlet {
+  padding: inherit;
+}

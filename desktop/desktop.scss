@@ -1,7 +1,3 @@
-body:not(.staff) .hamburger-dropdown {
-  display: none;
-}
-
 .home.banner {
   & > div {
     background-image: url($home_banner_image);

@@ -20,6 +20,10 @@ table td {
   vertical-align: top;
 }
 
+body:not(.staff) .hamburger-dropdown {
+  display: none;
+}
+
 // Global rounded button to extend
 .btn-behavior {
   font-size: 1.1rem !important;

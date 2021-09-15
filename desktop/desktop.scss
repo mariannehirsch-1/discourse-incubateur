@@ -3,13 +3,9 @@ body:not(.staff) .hamburger-dropdown {
 }
 
 .home.banner {
-  padding: 3rem 1.3rem;
   & > div {
     background-image: url($home_banner_image);
     background-size: auto;
-  }
-  .wrap {
-    padding: 0;
   }
 }
 

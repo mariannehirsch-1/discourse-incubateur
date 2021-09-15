@@ -84,13 +84,18 @@ table td {
 
 .home.banner {
   background-color: #F0F6F5;
+  padding: 3rem 1.3rem;
   & > div {
     background-size: 10rem;
+  }
+  .wrap {
+    padding: 0;
   }
   h1 {
     margin: 0;
     margin-bottom: 1.4rem;
   }
+
 
   button,
   a.btn {

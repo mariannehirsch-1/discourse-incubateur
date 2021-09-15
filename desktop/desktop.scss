@@ -25,3 +25,8 @@ body:not(.staff) .hamburger-dropdown {
     display: inline-flex;
   }
 }
+
+// remove "+" sign from button "Create a topic"
+button.btn-icon-text > svg {
+  display: none !important;
+}

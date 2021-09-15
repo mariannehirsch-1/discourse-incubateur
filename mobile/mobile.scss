@@ -1,0 +1,17 @@
+// All styles should be mobile first and overriden for
+// Desktop when needed.
+// Here are styles that would be too much work to override
+// in desktop.scss
+
+.navigation-controls {
+  // the "Create a topic" button should only be a "+"
+  button {
+    overflow: hidden;
+    text-indent: -1000px;
+    max-width: 30px;
+
+    .d-icon {
+      margin-right: auto;
+    }
+  }
+}

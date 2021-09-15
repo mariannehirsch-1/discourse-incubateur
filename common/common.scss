@@ -85,7 +85,6 @@ table td {
 .home.banner {
   background-color: #F0F6F5;
   & > div {
-    background-image: url($home_banner_image);
     background-size: 10rem;
   }
   h1 {
